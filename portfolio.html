@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Aboreto&display=swap" rel="stylesheet">
     
-    <style>
+     <style>
         /* Apply the Inter font family */
         body {
             font-family: 'Inter', sans-serif;
@@ -25,6 +25,30 @@
         /* Simple animation for mobile menu */
         #mobile-menu {
             transition: transform 0.3s ease-in-out;
+        }
+
+        /* --- Minimal Scroll Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fade In Load (Hero) */
+        .fade-in-load {
+            opacity: 0;
+            animation: fadeInLoad 1s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        
+        @keyframes fadeInLoad {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -279,4 +303,5 @@
     </script>
 
 </body>
+
 </html>
