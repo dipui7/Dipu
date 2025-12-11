@@ -136,8 +136,8 @@
                 <!-- Category Filter Buttons -->
                 <!-- Added onclick handlers just in case JS listeners miss, but the main script handles it -->
                 <div class="fade-in-load delay-200 mt-10 flex flex-wrap justify-center gap-4">
-                    <button class="filter-btn active px-6 py-2 rounded-full border border-slate-200 text-sm font-medium transition-all shadow-sm hover:-translate-y-1 transform" data-filter="all">All Work</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-medium bg-white text-slate-600 hover:bg-slate-50 hover:text-sky-500 transition-all shadow-sm hover:-translate-y-1 transform" data-filter="photography">Photography</button>
+                    <!-- Removed "All Work" button -->
+                    <button class="filter-btn active px-6 py-2 rounded-full border border-slate-200 text-sm font-medium transition-all shadow-sm hover:-translate-y-1 transform bg-sky-500 text-white border-sky-500" data-filter="photography">Photography</button>
                     <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-medium bg-white text-slate-600 hover:bg-slate-50 hover:text-sky-500 transition-all shadow-sm hover:-translate-y-1 transform" data-filter="videography">Videography</button>
                     <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 text-sm font-medium bg-white text-slate-600 hover:bg-slate-50 hover:text-sky-500 transition-all shadow-sm hover:-translate-y-1 transform" data-filter="design">Design</button>
                 </div>
@@ -424,6 +424,16 @@
 
             // --- Re-Select Portfolio Items after injection ---
             const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            // --- Initial Load: Show only Photography items (since All button is gone) ---
+            // Hide everything first
+            portfolioItems.forEach(item => {
+                if (!item.classList.contains('photography')) {
+                    item.classList.add('hidden');
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                }
+            });
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
