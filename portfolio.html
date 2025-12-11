@@ -371,7 +371,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Filter Logic, Animations, and Mobile Menu -->
+   !-- JavaScript for Filter Logic, Animations, and Mobile Menu -->
     <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
             // --- Mobile Menu Logic ---
@@ -444,11 +444,42 @@
                     });
                 });
             });
+
+            // --- AUTO GENERATE 42 IMAGES ---
+            // This script generates p1.jpg/JPG to p42.jpg/JPG automatically
+            const grid = document.getElementById('portfolio-grid');
+            
+            // Loop from 1 to 42
+            // We want to generate p1 to p42
+            for (let i = 1; i <= 42; i++) {
+                const div = document.createElement('div');
+                div.className = 'portfolio-item photography reveal group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300';
+                
+                // Create the HTML structure for each item
+                // NOTE: The onerror attribute handles the .jpg vs .JPG issue automatically!
+                div.innerHTML = `
+                    <img src="./images/p${i}.jpg" 
+                         alt="Portfolio Image ${i}" 
+                         class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                         loading="lazy" 
+                         onerror="this.onerror=null; this.src='./images/p${i}.JPG';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-white text-sm font-light">Photography</p>
+                    </div>
+                `;
+                
+                // Insert at the beginning of the grid
+                grid.insertBefore(div, grid.firstChild);
+                
+                // Observe the new element for animation
+                observer.observe(div);
+            }
         });
     </script>
 
 </body>
 </html>
+
 
 
 
