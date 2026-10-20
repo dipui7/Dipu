@@ -1,313 +1,151 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Mohammad Dipu Islam</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Aboreto&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Apply the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* New font class for the logo */
-        .font-logo {
-            font-family: 'Aboreto', cursive;
-        }
-        /* Simple animation for mobile menu */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Contact | Mohammad Dipu Islam</title>
+  <meta name="description" content="Get in touch with Mohammad Dipu Islam for photography, videography, communications and digital strategy projects with humanitarian and social-impact organisations.">
+  <meta name="author" content="Mohammad Dipu Islam">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://dipui7.github.io/Dipu/contact.html">
 
-        /* --- Minimal Scroll Animations --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  <!-- Open Graph / link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mohammad Dipu Islam">
+  <meta property="og:url" content="https://dipui7.github.io/Dipu/contact.html">
+  <meta property="og:title" content="Contact | Mohammad Dipu Islam">
+  <meta property="og:description" content="Get in touch with Mohammad Dipu Islam for photography, videography, communications and digital strategy projects with humanitarian and social-impact organisations.">
+  <meta property="og:image" content="https://dipui7.github.io/Dipu/images/web/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mohammad Dipu Islam — humanitarian visual storyteller">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | Mohammad Dipu Islam">
+  <meta name="twitter:description" content="Get in touch with Mohammad Dipu Islam for photography, videography, communications and digital strategy projects with humanitarian and social-impact organisations.">
+  <meta name="twitter:image" content="https://dipui7.github.io/Dipu/images/web/og-cover.jpg">
 
-        /* Fade In Load (Hero) */
-        .fade-in-load {
-            opacity: 0;
-            animation: fadeInLoad 1s ease-out forwards;
-        }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        
-        @keyframes fadeInLoad {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <link rel="icon" href="images/web/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/site.js" defer></script>
 </head>
-<body class="bg-white text-slate-600 antialiased">
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
 
-    <!-- Header & Navigation -->
-    <header class="bg-white sticky top-0 z-50 shadow-sm w-full border-b border-slate-100">
-        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <!-- Left: Brand Name -->
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center">
-                        <span class="text-2xl font-bold text-slate-800 font-logo">Mohammad Dipu Islam</span>
-                    </a>
-                </div>
-
-                <!-- Center: Logo (Desktop Only) -->
-                <div class="hidden md:block">
-                    <a href="index.html">
-                        <img class="h-14 w-auto" src="https://i.ibb.co/sdqdnd9d/D-logo.png" alt="Mohammad Dipu Islam Logo">
-                    </a>
-                </div>
-                
-                <!-- Right: Desktop Navigation -->
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="./about.html" class="text-slate-500 hover:text-sky-500 font-medium transition-colors">About</a>
-                    <a href="./portfolio.html" class="text-slate-500 hover:text-sky-500 font-medium transition-colors">Portfolio</a>
-                    <a href="./contact.html" class="text-sky-500 font-medium transition-colors">Contact</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-500 hover:text-slate-800 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t border-slate-100">
-            <a href="./about.html" class="mobile-menu-link block px-4 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-sky-500">About</a>
-            <a href="./portfolio.html" class="mobile-menu-link block px-4 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-sky-500">Portfolio</a>
-            <a href="./contact.html" class="mobile-menu-link block px-4 py-3 text-base font-medium text-sky-500 bg-slate-50">Contact</a>
+  <!-- ============ Navbar ============ -->
+  <header class="nav-glass" data-nav data-scrolled="false" data-open="false">
+    <nav class="container-x flex h-16 items-center justify-between gap-4 sm:h-20" aria-label="Primary">
+      <a href="index.html" class="flex min-w-0 items-center gap-3" aria-label="Mohammad Dipu Islam — home">
+        <img src="https://i.ibb.co/sdqdnd9d/D-logo.png" alt="" class="h-9 w-auto sm:h-11" width="44" height="44">
+        <span class="truncate font-logo text-base font-bold text-ink min-[400px]:text-lg sm:text-xl">Mohammad Dipu Islam</span>
+      </a>
+      <div class="hidden items-center gap-8 md:flex">
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="portfolio.html">Portfolio</a>
+        <a class="nav-link" href="stories.html">Stories</a>
+        <a class="btn-primary !min-h-[2.5rem] !px-5" href="contact.html" aria-current="page">Contact</a>
+      </div>
+      <button type="button" class="-mr-2 grid h-11 w-11 shrink-0 place-items-center rounded-full text-ink md:hidden" data-nav-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="mobile-panel" data-nav-panel>
+      <div>
+        <div class="container-x flex flex-col pb-6">
+          <a class="mobile-link" href="index.html">Home <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="mobile-link" href="about.html">About <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="mobile-link" href="portfolio.html">Portfolio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="mobile-link" href="stories.html">Stories <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn-primary mt-6" href="contact.html">Contact</a>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <main>
+  <main id="main">
+    <section class="relative overflow-hidden bg-cream">
+      <div class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-brand-100/70 blur-3xl"></div>
+      <div class="container-x relative py-16 sm:py-24">
+        <p class="eyebrow hero-in">Contact</p>
+        <h1 class="h-display hero-in mt-4 max-w-4xl text-[2.6rem] sm:text-6xl lg:text-7xl" style="--d:80ms">Let’s Start a Conversation</h1>
+        <p class="lede hero-in mt-5 max-w-2xl" style="--d:160ms">Whether you have a project in mind or just want to say hello, I’d love to hear from you.</p>
+      </div>
+    </section>
 
-        <!-- Hero Section -->
-        <section class="bg-slate-50 py-20 md:py-32 relative overflow-hidden">
-             <!-- Decorative clear blob for airiness -->
-             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl opacity-30 pointer-events-none">
-                <div class="absolute top-10 right-10 w-64 h-64 bg-sky-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+    <section class="section">
+      <div class="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <span class="reveal inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
+            <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
+            Currently accepting new projects
+          </span>
+          <h2 class="h-section reveal mt-6">Get In Touch</h2>
+          <p class="lede reveal mt-5">I am currently available for freelance projects, long-term contracts, and humanitarian collaborations. If you are interested in working together, please fill out the form or connect with me via email or social media.</p>
+          <dl class="reveal mt-10 space-y-7">
+            <div>
+              <dt class="eyebrow">Email</dt>
+              <dd class="mt-2"><a href="mailto:3iupid@gmail.com" class="font-display text-2xl text-ink underline decoration-brand-300 decoration-2 underline-offset-[6px] transition hover:text-brand-700">3iupid@gmail.com</a></dd>
             </div>
-            
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <h1 class="fade-in-load text-4xl md:text-5xl font-bold text-slate-800 mb-6">Let's Start a Conversation</h1>
-                <p class="fade-in-load delay-100 text-xl text-slate-500 font-light max-w-2xl mx-auto">
-                    Whether you have a project in mind or just want to say hello, I'd love to hear from you.
-                </p>
+            <div>
+              <dt class="eyebrow">Location</dt>
+              <dd class="mt-2 font-display text-2xl text-ink">Bangladesh</dd>
             </div>
-        </section>
-
-        <!-- Contact Content -->
-        <section class="py-20 bg-white">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="reveal delay-200 grid md:grid-cols-2 gap-16">
-                    
-                    <!-- Contact Info Column -->
-                    <div>
-                        <div class="mb-8">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                <span class="w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse"></span>
-                                Currently accepting new projects
-                            </span>
-                        </div>
-
-                        <h2 class="text-2xl font-bold text-slate-800 mb-8">Get In Touch</h2>
-                        <p class="text-slate-500 font-light mb-10 leading-relaxed">
-                            I am currently available for freelance projects, long-term contracts, and humanitarian collaborations. If you are interested in working together, please fill out the form or connect with me via email or social media.
-                        </p>
-                        
-                        <div class="space-y-8">
-                            <!-- Email -->
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-slate-50 text-sky-500">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-slate-800">Email</h3>
-                                    <a href="mailto:3iupid@gmail.com" class="text-sky-500 hover:text-sky-600 transition-colors">3iupid@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <!-- Location -->
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-slate-50 text-sky-500">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-slate-800">Location</h3>
-                                    <p class="text-slate-500 font-light">Bangladesh</p>
-                                </div>
-                            </div>
-
-                            <!-- Socials -->
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-slate-50 text-sky-500">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-medium text-slate-800">Social Media</h3>
-                                    <div class="flex space-x-4 mt-1">
-                                        <a href="https://www.linkedin.com/in/md-dipu-i-7a08bb11a" target="_blank" class="text-slate-400 hover:text-sky-500 transition-colors">LinkedIn</a>
-                                        <span class="text-slate-300">|</span>
-                                        <a href="https://www.facebook.com/afnan0155dipu" target="_blank" class="text-slate-400 hover:text-sky-500 transition-colors">Facebook</a>
-                                        <span class="text-slate-300">|</span>
-                                        <a href="https://www.instagram.com/dipui3" target="_blank" class="text-slate-400 hover:text-sky-500 transition-colors">Instagram</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Form Column -->
-                    <div class="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm">
-                        
-                        <form action="https://formspree.io/f/mldznroz" method="POST" class="space-y-6">
-                            
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
-                                <input type="text" name="name" id="name" required placeholder="Your full name" class="mt-1 block w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow outline-none">
-                            </div>
-
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-                                <input type="email" name="email" id="email" required placeholder="you@example.com" class="mt-1 block w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow outline-none">
-                            </div>
-                            
-                            <div>
-                                <label for="subject" class="block text-sm font-medium text-slate-700">Subject</label>
-                                <select name="subject" id="subject" class="mt-1 block w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow outline-none text-slate-600">
-                                    <option value="">Select a topic</option>
-                                    <option value="Collaboration">Project Collaboration</option>
-                                    <option value="Photography">Photography/Videography</option>
-                                    <option value="Strategy">Digital Strategy</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
-                                <textarea name="message" id="message" rows="4" required placeholder="Tell me about your project..." class="mt-1 block w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow outline-none"></textarea>
-                            </div>
-
-                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors duration-300">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-
-                </div>
+            <div>
+              <dt class="eyebrow">Social Media</dt>
+              <dd class="mt-3 flex flex-wrap gap-2"><a href="https://www.linkedin.com/in/md-dipu-i-7a08bb11a" target="_blank" rel="noopener noreferrer" class="chip">LinkedIn</a><a href="https://www.facebook.com/afnan0155dipu" target="_blank" rel="noopener noreferrer" class="chip">Facebook</a><a href="https://www.instagram.com/dipui3" target="_blank" rel="noopener noreferrer" class="chip">Instagram</a></dd>
             </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-50 text-slate-500 border-t border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <h2 class="text-3xl font-bold text-slate-800 mb-4">Let's create impact together.</h2>
-            <p class="text-lg text-slate-500 mb-8 max-w-2xl mx-auto font-light">
-                Ready to amplify your cause? I'd love to hear your story.
-            </p>
-            <a href="mailto:3iupid@gmail.com" class="bg-sky-500 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-sky-600 transition duration-300 shadow-md">
-                3iupid@gmail.com
-            </a>
-            
-            <!-- Social Media Links -->
-            <div class="flex justify-center space-x-6 mt-12">
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/md-dipu-i-7a08bb11a" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-500 transition-colors">
-                    <span class="sr-only">LinkedIn</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/>
-                    </svg>
-                </a>
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/afnan0155dipu" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-500 transition-colors">
-                    <span class="sr-only">Facebook</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
-                    </svg>
-                </a>
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/dipui3" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-500 transition-colors">
-                    <span class="sr-only">Instagram</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.667 4.77-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.667-4.77 4.919-4.919 1.266-.058 1.646-.07 4.85.07zm0 2.16c-3.173 0-3.51.012-4.74.068-2.693.123-3.878 1.31-4.008 4.008-.056 1.23-.068 1.566-.068 4.74s.012 3.51.068 4.74c.13 2.698 1.315 3.885 4.008 4.008 1.23.056 1.566.068 4.74.068s3.51-.012 4.74-.068c2.693-.123 3.878-1.31 4.008-4.008.056-1.23.068-1.566.068-4.74s-.012-3.51-.068-4.74c-.13-2.698-1.315-3.885-4.008-4.008-1.23-.056-1.566.068-4.74-.068zM12 6.873c-2.825 0-5.127 2.302-5.127 5.127s2.302 5.127 5.127 5.127 5.127-2.302 5.127-5.127-2.302-5.127-5.127-5.127-5.127-5.127-5.127-5.127zm0 8.253c-1.728 0-3.127-1.4-3.127-3.127s1.4-3.127 3.127-3.127 3.127 1.4 3.127 3.127-1.4 3.127-3.127 3.127zm4.908-8.253c-.608 0-1.1.492-1.1 1.1s.492 1.1 1.1 1.1 1.1-.492 1.1-1.1-.492-1.1-1.1-1.1z" clip-rule="evenodd"/>
-                    </svg>
-                </a>
-            </div>
-
-            <!-- Copyright -->
-            <div class="mt-12 border-t border-slate-200 pt-8">
-                <p class="text-sm text-slate-400">&copy; 2025 Mohammad Dipu Islam. All rights reserved.</p>
-            </div>
+          </dl>
         </div>
-    </footer>
+        <div class="reveal lg:col-span-7" style="--d:120ms">
+          <form action="https://formspree.io/f/mldznroz" method="POST" class="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.2)] sm:p-10">
+            <div class="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label for="name" class="label">Name</label>
+                <input type="text" name="name" id="name" required autocomplete="name" placeholder="Your full name" class="field">
+              </div>
+              <div>
+                <label for="email" class="label">Email</label>
+                <input type="email" name="email" id="email" required autocomplete="email" placeholder="you@example.com" class="field">
+              </div>
+            </div>
+            <div class="mt-6">
+              <label for="subject" class="label">Subject</label>
+              <select name="subject" id="subject" class="field">
+                <option value="">Select a topic</option>
+                <option value="Collaboration">Project Collaboration</option>
+                <option value="Photography">Photography/Videography</option>
+                <option value="Strategy">Digital Strategy</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="mt-6">
+              <label for="message" class="label">Message</label>
+              <textarea name="message" id="message" rows="5" required placeholder="Tell me about your project..." class="field resize-y"></textarea>
+            </div>
+            <button type="submit" class="btn-primary mt-8 w-full !min-h-[3.25rem] text-base">
+              Send Message
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <!-- JavaScript for Scroll Animations and Mobile Menu -->
-    <script type="module">
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Logic
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
-
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            menuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-
-            // Scroll Animation Logic (Intersection Observer)
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Only animate once
-                    }
-                });
-            }, observerOptions);
-
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => observer.observe(el));
-        });
-    </script>
-
+  <!-- ============ Footer ============ -->
+  <footer class="border-t border-slate-200/70 bg-cream">
+    <div class="container-x flex flex-col items-center justify-between gap-6 border-t border-slate-200/70 py-8 sm:flex-row">
+      <p class="text-sm text-ink-muted">© <span data-year>2026</span> Mohammad Dipu Islam. All rights reserved.</p>
+      <ul class="flex items-center gap-3">
+        <li><a href="https://www.linkedin.com/in/md-dipu-i-7a08bb11a" target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full text-ink-muted ring-1 ring-slate-200 transition hover:bg-ink hover:text-white hover:ring-ink" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></li>
+        <li><a href="https://www.facebook.com/afnan0155dipu" target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full text-ink-muted ring-1 ring-slate-200 transition hover:bg-ink hover:text-white hover:ring-ink" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a></li>
+        <li><a href="https://www.instagram.com/dipui3" target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full text-ink-muted ring-1 ring-slate-200 transition hover:bg-ink hover:text-white hover:ring-ink" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>
