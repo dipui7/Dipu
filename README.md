@@ -17,7 +17,14 @@ Static site published with GitHub Pages at <https://dipui7.github.io/Dipu/>.
 
 1. Add the original as `images/p43.jpg`.
 2. Run `python3 scripts/optimize_images.py` to create the web versions in `images/web/`.
-3. In `portfolio.html`, copy one of the `<a class="photo-tile …">` blocks in the Photography section and change the number.
+3. In `portfolio.html`, copy a photo block and change the number and caption:
+   - **Series** (Childhood, The Caregivers, Home & Water): copy a `<figure>` block inside the series.
+   - **Archive**: copy an `<a class="photo-tile …">` block inside `<details class="archive">`.
+
+## Adding the showreel
+
+On the home page, find the `SHOWREEL` comment in the "Screening room" section and follow it. Turn the
+`<div data-showreel>` into a link with `data-video="youtube:YOUR_ID"` and replace "Coming soon" with a play button.
 
 ## Adding a film
 
