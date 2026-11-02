@@ -30,11 +30,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    /* Motion bootstrap: decide before first paint whether to play the intro or the page curtain.
+       If motion.js has not started within 4s, fall back to the static site. */
+    (function (d) {
+      var h = d.documentElement; h.classList.add('js');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      h.classList.add('motion');
+      try {
+        if (!sessionStorage.getItem('intro')) h.classList.add('intro-pending');
+        else if (sessionStorage.getItem('pt')) h.classList.add('curtain-pending');
+        sessionStorage.removeItem('pt');
+      } catch (e) {}
+      setTimeout(function () {
+        if (window.__motion) return;
+        h.classList.remove('motion', 'intro-pending', 'curtain-pending');
+        d.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+      }, 4000);
+    })(document);
+  </script>
+  <script src="assets/js/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/vendor/SplitText.min.js" defer></script>
+  <script src="assets/js/vendor/lenis.min.js" defer></script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
 </head>
 <body>
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+  <div class="intro" aria-hidden="true">
+    <div class="intro-bar intro-bar-top"></div>
+    <div class="intro-bar intro-bar-bottom"></div>
+    <div class="intro-inner">
+      <p class="intro-name">Mohammad Dipu Islam</p>
+      <span class="intro-line"><span></span></span>
+      <p class="intro-count">00</p>
+    </div>
+  </div>
+  <div class="curtain" aria-hidden="true"></div>
 
   <!-- ============ Navbar ============ -->
   <header class="nav-glass" data-nav data-scrolled="false" data-open="false">
@@ -99,9 +132,9 @@
           <p class="lede max-w-md">Field photography from Cox’s Bazar and across Bangladesh, edited into three series. Tap any photo to view it full screen.</p>
         </div>
 
-        <div id="childhood" class="mt-16 scroll-mt-36 sm:mt-20 sm:scroll-mt-40">
+        <div id="childhood" class="mt-16 scroll-mt-36 sm:mt-20 sm:scroll-mt-40" data-series>
           <div class="reveal grid gap-4 border-t border-slate-200 pt-8 md:grid-cols-12 md:gap-8">
-            <p class="font-display text-5xl italic text-brand-600 md:col-span-2">I</p>
+            <p class="font-display text-5xl italic text-brand-600 md:col-span-2" data-numeral>I</p>
             <div class="md:col-span-10">
               <h3 class="font-display text-3xl text-ink sm:text-4xl">Childhood</h3>
               <p class="lede mt-3 max-w-2xl">Curiosity, play and learning. Childhood carries on in narrow lanes, bamboo doorways and makeshift classrooms.</p>
@@ -110,7 +143,7 @@
           </div>
           <div class="mt-10 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           <figure class="reveal flex flex-col sm:col-span-2 lg:row-span-2">
-            <a href="images/web/p13-1800.webp" class="photo-tile lg:flex-1" data-photo data-gallery="childhood" data-caption="A boy laughs, hand raised, among other children.">
+            <a href="images/web/p13-1800.webp" class="photo-tile lg:flex-1" data-parallax="6" data-photo data-gallery="childhood" data-caption="A boy laughs, hand raised, among other children.">
               <img src="images/web/p13-800.webp" srcset="images/web/p13-800.webp 800w, images/web/p13-1800.webp 1800w" sizes="(min-width: 1024px) 66vw, 100vw" alt="A boy laughs, hand raised, among other children" width="800" height="533" loading="lazy" decoding="async" class="aspect-[3/2] lg:absolute lg:inset-0 lg:aspect-auto lg:!h-full w-full object-cover">
             </a>
             <figcaption class="mt-2.5 text-sm leading-snug text-ink-muted">A boy laughs, hand raised, among other children.</figcaption>
@@ -153,9 +186,9 @@
           </figure>
           </div>
         </div>
-        <div id="caregivers" class="mt-16 scroll-mt-36 sm:mt-20 sm:scroll-mt-40">
+        <div id="caregivers" class="mt-16 scroll-mt-36 sm:mt-20 sm:scroll-mt-40" data-series>
           <div class="reveal grid gap-4 border-t border-slate-200 pt-8 md:grid-cols-12 md:gap-8">
-            <p class="font-display text-5xl italic text-brand-600 md:col-span-2">II</p>
+            <p class="font-display text-5xl italic text-brand-600 md:col-span-2" data-numeral>II</p>
             <div class="md:col-span-10">
               <h3 class="font-display text-3xl text-ink sm:text-4xl">The Caregivers</h3>
               <p class="lede mt-3 max-w-2xl">Health workers and community volunteers: the people who show up every day, often from the same communities they serve.</p>
@@ -164,7 +197,7 @@
           </div>
           <div class="mt-10 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           <figure class="reveal flex flex-col sm:col-span-2 lg:row-span-2">
-            <a href="images/web/p40-1800.webp" class="photo-tile lg:flex-1" data-photo data-gallery="caregivers" data-caption="A volunteer in a safety helmet smiles on a camp pathway.">
+            <a href="images/web/p40-1800.webp" class="photo-tile lg:flex-1" data-parallax="6" data-photo data-gallery="caregivers" data-caption="A volunteer in a safety helmet smiles on a camp pathway.">
               <img src="images/web/p40-800.webp" srcset="images/web/p40-800.webp 800w, images/web/p40-1800.webp 1800w" sizes="(min-width: 1024px) 66vw, 100vw" alt="A volunteer in a safety helmet smiles on a camp pathway" width="800" height="533" loading="lazy" decoding="async" class="aspect-[3/2] lg:absolute lg:inset-0 lg:aspect-auto lg:!h-full w-full object-cover">
             </a>
             <figcaption class="mt-2.5 text-sm leading-snug text-ink-muted">A volunteer in a safety helmet smiles on a camp pathway.</figcaption>
@@ -207,9 +240,9 @@
           </figure>
           </div>
         </div>
-        <div id="home-water" class="mt-16 scroll-mt-36 sm:mt-20 sm:scroll-mt-40">
+        <div id="home-water" class="mt-16 scroll-mt-36 sm:mt-20 sm:scroll-mt-40" data-series>
           <div class="reveal grid gap-4 border-t border-slate-200 pt-8 md:grid-cols-12 md:gap-8">
-            <p class="font-display text-5xl italic text-brand-600 md:col-span-2">III</p>
+            <p class="font-display text-5xl italic text-brand-600 md:col-span-2" data-numeral>III</p>
             <div class="md:col-span-10">
               <h3 class="font-display text-3xl text-ink sm:text-4xl">Home & Water</h3>
               <p class="lede mt-3 max-w-2xl">The quiet labour of care at home: carrying water, feeding children and holding each other close.</p>
@@ -218,7 +251,7 @@
           </div>
           <div class="mt-10 grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           <figure class="reveal flex flex-col sm:col-span-2 lg:row-span-2">
-            <a href="images/web/p1-1800.webp" class="photo-tile lg:flex-1" data-photo data-gallery="home-water" data-caption="A mother holds her child close.">
+            <a href="images/web/p1-1800.webp" class="photo-tile lg:flex-1" data-parallax="6" data-photo data-gallery="home-water" data-caption="A mother holds her child close.">
               <img src="images/web/p1-800.webp" srcset="images/web/p1-800.webp 800w, images/web/p1-1800.webp 1800w" sizes="(min-width: 1024px) 66vw, 100vw" alt="A mother holds her child close" width="800" height="533" loading="lazy" decoding="async" class="aspect-[3/2] lg:absolute lg:inset-0 lg:aspect-auto lg:!h-full w-full object-cover">
             </a>
             <figcaption class="mt-2.5 text-sm leading-snug text-ink-muted">A mother holds her child close.</figcaption>
@@ -466,49 +499,49 @@
         </div>
         <div class="masonry mt-12">
           <figure class="reveal" style="--d:0ms">
-            <a href="images/web/p_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="WASH Campaign — Visual identity and posters">
+            <a href="images/web/p_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="WASH Campaign — Visual identity and posters" data-wipe>
               <img src="images/web/p_1.webp" alt="WASH Campaign — Visual identity and posters" width="679" height="967" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">WASH Campaign</span><span class="text-sm text-ink-muted">Visual identity and posters</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:80ms">
-            <a href="images/web/p_2.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="WASH Campaign — Visual identity and posters">
+            <a href="images/web/p_2.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="WASH Campaign — Visual identity and posters" data-wipe>
               <img src="images/web/p_2.webp" alt="WASH Campaign — Visual identity and posters" width="613" height="920" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">WASH Campaign</span><span class="text-sm text-ink-muted">Visual identity and posters</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:160ms">
-            <a href="images/web/p_3.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="WASH Campaign — Visual identity and posters">
+            <a href="images/web/p_3.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="WASH Campaign — Visual identity and posters" data-wipe>
               <img src="images/web/p_3.webp" alt="WASH Campaign — Visual identity and posters" width="649" height="973" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">WASH Campaign</span><span class="text-sm text-ink-muted">Visual identity and posters</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:0ms">
-            <a href="images/web/v_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Wider Water — Project signage">
+            <a href="images/web/v_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Wider Water — Project signage" data-wipe>
               <img src="images/web/v_1.webp" alt="Wider Water — Project signage" width="1001" height="501" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">Wider Water</span><span class="text-sm text-ink-muted">Project signage</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:80ms">
-            <a href="images/web/RB_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Causal Loop Analysis Workshop — Event banner">
+            <a href="images/web/RB_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Causal Loop Analysis Workshop — Event banner" data-wipe>
               <img src="images/web/RB_1.webp" alt="Causal Loop Analysis Workshop — Event banner" width="376" height="915" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">Causal Loop Analysis Workshop</span><span class="text-sm text-ink-muted">Event banner</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:160ms">
-            <a href="images/web/b_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Causal Loop Analysis Workshop — Event backdrop">
+            <a href="images/web/b_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Causal Loop Analysis Workshop — Event backdrop" data-wipe>
               <img src="images/web/b_1.webp" alt="Causal Loop Analysis Workshop — Event backdrop" width="1400" height="598" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">Causal Loop Analysis Workshop</span><span class="text-sm text-ink-muted">Event backdrop</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:0ms">
-            <a href="images/web/rb_2.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Causal Loop Analysis Workshop — Roll-up banner">
+            <a href="images/web/rb_2.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Causal Loop Analysis Workshop — Roll-up banner" data-wipe>
               <img src="images/web/rb_2.webp" alt="Causal Loop Analysis Workshop — Roll-up banner" width="382" height="917" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">Causal Loop Analysis Workshop</span><span class="text-sm text-ink-muted">Roll-up banner</span></figcaption>
           </figure>
           <figure class="reveal" style="--d:80ms">
-            <a href="images/web/F_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Branded presentation folder — Print design">
+            <a href="images/web/F_1.webp" class="photo-tile !bg-white ring-1 ring-slate-200" data-photo data-gallery="design" data-caption="Branded presentation folder — Print design" data-wipe>
               <img src="images/web/F_1.webp" alt="Branded presentation folder — Print design" width="971" height="968" loading="lazy" decoding="async">
             </a>
             <figcaption class="mt-3"><span class="block text-sm font-semibold text-ink">Branded presentation folder</span><span class="text-sm text-ink-muted">Print design</span></figcaption>
