@@ -40,3 +40,17 @@ Copy one of the cards in `stories.html`, update the link, image, title, summary,
 npm install
 npm run build   # rebuilds assets/css/site.css — commit it afterwards
 ```
+
+## Motion
+
+`assets/js/motion.js` adds the animation layer using GSAP (ScrollTrigger, SplitText) and Lenis, served from `assets/js/vendor/`:
+
+- an opening title on the first visit of each session, and a curtain between pages
+- smooth scrolling, masked headline reveals, image wipes and parallax
+- the "lights down" fade into the dark film sections and the expanding showreel panel
+- the pinned horizontal film strip on the home page (desktop; swipeable on phones)
+- a custom cursor and magnetic buttons (mouse/trackpad only)
+
+Visitors with **Reduce motion** turned on in their device settings get the static site. If the motion scripts ever fail to load, the page falls back to the static version after 4 seconds.
+
+To update the libraries: `npm install gsap@latest lenis@latest && npm run vendor`.

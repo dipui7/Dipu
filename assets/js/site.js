@@ -45,6 +45,8 @@
   const revealEls = $$('.reveal');
   if (!('IntersectionObserver' in window) || reduceMotion) {
     revealEls.forEach((el) => el.classList.add('is-visible'));
+  } else if (document.documentElement.classList.contains('motion')) {
+    // assets/js/motion.js drives reveals with GSAP (and falls back to this if it fails to load).
   } else {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -169,6 +171,7 @@
     render(trigger);
     const scrollbar = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.overflow = 'hidden';
+    window.__lenis?.stop();
     document.body.style.paddingRight = scrollbar ? `${scrollbar}px` : '';
     box.hidden = false;
     $('[data-close].lightbox-btn', box).focus();
@@ -179,6 +182,7 @@
     box.hidden = true;
     stage.replaceChildren(); // removing the iframe stops playback
     document.documentElement.style.overflow = '';
+    window.__lenis?.start();
     document.body.style.paddingRight = '';
     lastFocus?.focus?.();
   }
@@ -224,6 +228,7 @@
         item.hidden = !match;
         if (match) { shown++; item.classList.add('is-visible'); }
       });
+      window.ScrollTrigger?.refresh();
       if (status) status.textContent = `${shown} ${shown === 1 ? 'story' : 'stories'}`;
     }));
   }

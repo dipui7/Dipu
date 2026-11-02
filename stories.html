@@ -30,11 +30,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    /* Motion bootstrap: decide before first paint whether to play the intro or the page curtain.
+       If motion.js has not started within 4s, fall back to the static site. */
+    (function (d) {
+      var h = d.documentElement; h.classList.add('js');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      h.classList.add('motion');
+      try {
+        if (!sessionStorage.getItem('intro')) h.classList.add('intro-pending');
+        else if (sessionStorage.getItem('pt')) h.classList.add('curtain-pending');
+        sessionStorage.removeItem('pt');
+      } catch (e) {}
+      setTimeout(function () {
+        if (window.__motion) return;
+        h.classList.remove('motion', 'intro-pending', 'curtain-pending');
+        d.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+      }, 4000);
+    })(document);
+  </script>
+  <script src="assets/js/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/vendor/SplitText.min.js" defer></script>
+  <script src="assets/js/vendor/lenis.min.js" defer></script>
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
 </head>
 <body>
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+  <div class="intro" aria-hidden="true">
+    <div class="intro-bar intro-bar-top"></div>
+    <div class="intro-bar intro-bar-bottom"></div>
+    <div class="intro-inner">
+      <p class="intro-name">Mohammad Dipu Islam</p>
+      <span class="intro-line"><span></span></span>
+      <p class="intro-count">00</p>
+    </div>
+  </div>
+  <div class="curtain" aria-hidden="true"></div>
 
   <!-- ============ Navbar ============ -->
   <header class="nav-glass" data-nav data-scrolled="false" data-open="false">
@@ -196,7 +229,7 @@
   <footer class="border-t border-slate-200/70 bg-cream">
     <div class="container-x py-20 text-center sm:py-24">
       <p class="eyebrow reveal">Let’s collaborate</p>
-      <h2 class="h-display reveal mx-auto mt-4 max-w-2xl text-4xl sm:text-5xl">Let’s create impact together.</h2>
+      <h2 class="h-display reveal mx-auto mt-4 max-w-2xl text-4xl sm:text-5xl" data-split-chars>Let’s create impact together.</h2>
       <p class="lede reveal mx-auto mt-5 max-w-xl">Ready to amplify your cause? I’d love to hear your story.</p>
       <div class="reveal mt-9 flex flex-wrap justify-center gap-3">
         <a href="mailto:3iupid@gmail.com" class="btn-primary !min-h-[3rem] !px-7">
